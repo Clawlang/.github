@@ -15,8 +15,8 @@ Claw's main stake in the language ecosystem is implicit interfaces and events.
 import std;
 
 pub const Parent = struct {
-  field: int,
-  otherField: int,
+  field: i32,
+  otherField: i32,
 
   fn |self: Parent*| method() void {
 
