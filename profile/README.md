@@ -14,18 +14,18 @@ Claw's main stake in the language ecosystem is implicit interfaces and events.
 ```claw
 import std;
 
-pub const Parent = struct {
+type Parent = struct {
   field: i32,
   otherField: i32,
 
-  fn |self: Parent*| method() void {
+  fn |self| method() void {
 
   }
 };
 
 // alias makes it inherit fields and methods from the Parent 
 // struct
-pub const Child = alias Parent {
+type Child = alias Parent {
   # capture parameter can be Child since it conforms to Parent 
   # struct.
   override fn |self: Child*| method() void {
@@ -81,12 +81,12 @@ pub const App = struct {
   # and when to call it.
   # events can be overridden by other structs that alias this struct
   event |self: App*| start {
-    self.window.title = self.name; //set title name
+    self.window.title = std.str.String.init(self.name); //set title name
     app.window.show(); //show window
   }
 };
 
-pub fn main(args: std.String[]) void {
+pub fn main(args: u8[]) void {
   const allocator = std.Allocators.DebugAllocator;
 
   app: App = .{
